@@ -1,0 +1,205 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{kotex}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+ 
+\begin{document}
+ 
+\title{\textbf{OSS 팀 프로젝트 - Pacman}}
+
+\author {20134827 박진범\\20134821 최석원\\20134909 이진호}
+\date{2017년 12월 8일}
+\maketitle
+ 
+ 
+ 
+\newpage
+\begin{huge}\begin{center}\textbf{목차\\}\end{center}\end{huge}
+ 
+\begin{enumerate}
+
+\item 오픈 소스 SW 선택 이유\\
+\item 선택한 오픈 소스 SW 실행 방법\\
+\item Pacman 사용 설명서\\
+\item 기능 향상을 위한 제안\\
+\item 회의록 \\
+\item 느낀점 \\
+\item 기록\\
+ 
+\end{enumerate}
+
+\newpage
+
+\flushleft
+\begin{large}\textbf{1. 오픈소스 SW 선택 이유}\end{large}
+\begin{itemize}
+ 
+\item 첫 번째로 여러가지 오픈 소스 범주 중 게임을 선택한 이유는\\ 
+플래시 게임, 온라인 게임, 모바일 게임까지 한번쯤은 다 접해봤기 때문에 쉽게 접근 할 수 있을거라고 생각을 해서 게임을 선택했습니다. \\
+또한 설명서를 작성하면서 잠깐이나마 즐기면서 작성할 수 있다는 점을 고려해 최종적으로 게임을 선택하였습니다.\\
+
+
+\item 여러 게임이 있지만 Pacman을 선택한 이유는 어릴 적 플래시로 플레이 했던 기억이 있고, 소스나 개발 환경을 현실적인 우리의 실력을 바탕으로 구성할 수 있을 정도의 오픈 소스 게임을 찾다 보니 최종적으로 Pacman을 선택하게 되었습니다.\\
+ 
+\end{itemize}
+
+ 
+\begin{large}\textbf{2. 선택한 오픈 소스 SW 실행 방법 (Ubuntu)}\end{large}
+\begin{enumerate}
+\item Oracle VM Virtual Machine을 실행합니다. \\
+
+설치 : \url{https://www.virtualbox.org/wiki/Downloads}\\ 
+ \begin{figure}[!h]
+\centering
+\includegraphics[width=1\columnwidth]{install}
+\end{figure}
+
+\newpage
+
+\item Vircual Machine에 설치 되어있는 Ubuntu를 실행합니다. \\
+설치 : \url{https://www.ubuntu.com/download/desktop}\\
+
+ \begin{figure}[!h]
+\centering
+\includegraphics[width=1\columnwidth]{ubuntu}
+\end{figure}
+
+\item \url{https://github.com} 에 접속 후 pacman의 자료들(pacman-master)을 받은 후 terminal을 실행합니다. \\※ 설치 경로 : 바탕화면으로 가정\\
+
+ \begin{figure}[!h]
+\centering
+\includegraphics[width=1\columnwidth]{pacman}
+\end{figure}
+
+\item ls를 입력 후 현재 위치를 인지한 후에 cd 바탕화면 명령어를 입력해서 바탕화면으로 이동한 후 cd pacman-master명령어를 입력하여 pacman-master폴더의 위치로 이동합니다.\\
+\item 다시 ls를 입력하면 pacman-master폴더 안에있는 파일들이 나오게 되는데 make 명령어를 입력합니다.\\
+\includegraphics[scale=0.9]{1.png}
+\item pacman을 입력하면 아래와 같은 메시지가 나올것입니다. \\
+"The program 'pacman' is currently not installed. You can install it by typing: sudo apt install pacman"\\
+\item "sudo apt install pacman" 입력하라고 메시지가 출력됩니다.\\ 입력하면 패스워드 입력하라고 메시지가 출력되는데,\\현재 사용하고있는 사용자 pc의 암호를 입력합니다. \\입력하면 아래와 같은 메시지가 나옵니다.\\
+\includegraphics[scale=0.7]{2.png}
+\end{enumerate}
+
+\newpage
+\begin{large}\textbf{3. Pacman 사용 설명서}\end{large}
+\begin{itemize}
+\item pacman 또는 packman.out으로 만들어진 파일을 실행시킵니다.
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\columnwidth]{start}
+\end{figure}
+\item 조작법 : 키보드의 ↑(위), ↓(아래), →(오른쪽), ←(왼쪽) 버튼을 이용한다.
+\item 시작은 맵의 중하단부의 노란색 팩맨으로 부터 시작하며 유령을 피해 도망다녀야 합니다.
+\item 유령은 빨간색, 주황색, 자주색, 분홍색 총 4마리로 잡히면 목숨이 1개 줄어듭니다.
+\item 생명(Lives)은 시작시 총 3개로 시작하며 유령에 부딪혀 죽을때마다 1씩 감소하고 0이될시 게임오버가 됩니다.
+\item 방향키를 이용 유령을 피해 돌아다니면서 노란색으로 된 작은 점을 제한시간(bonus)동안 최대한 많이 먹어야합니다. (점하나당 +10점)
+\item 맵의 4방향 끝에 위치한 노란색 큰점을 먹으면 Supertime을 가지게 됩니다.
+\newpage
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\columnwidth]{supertime}
+\end{figure}
+
+\item Supertime은 약 7초로 팩맨의 이동속도가 빨라지고, 회색으로 변한 유령들을 잡아먹을 수 있으며 잡을시 유령은 가운데의 감옥으로 들어갑니다. (유령당 +100점)
+\item 잡아먹은 유령은 잡힌 시점부터 약 7초 후 다시 탈출합니다.
+\item 유령들을 피해 노란점들을 전부 다 먹으면 라운드가 클리어 되고 즉시 똑같은 맵으로 된 다음 라운드가 시작됩니다.
+\item 점수는 클리어했을때 이어지며 Hiscore에 점수가 기록되고 Level이 1에서\\ 2로 증가합니다.
+\item 주어진 생명(Lives) 내에 가장 높은 점수(Hiscore)를 기록한 사람이 이기게 됩니다.
+\end{itemize}
+
+\newpage
+\begin{large}\textbf{4. 기능 향상을 위한 제안}\end{large}
+\begin{enumerate}
+\item 처음 팩맨을 실행 했을 때 시작 버튼이 따로 없이 바로 시작되는 점이 아쉽습니다.
+\item 게임 중 일시 정지 버튼/키가 없는게 불편했습니다.
+
+ \begin{figure}[!h]
+\centering
+\includegraphics[width=0.35\columnwidth]{pause}
+\end{figure}
+
+\item 게임의 진행속도가 조금 빨라서 방향키를 조작하는데 어려움이 있습니다.\\ 속도를 줄이면 더활 원한 플레이가 가능할것 같습니다.
+\item 생명의 갯수 경우에도 숫자가 아닌 이미지를 통해서 보여지면 더 좋을것 같습니다.
+ \begin{figure}[!h]
+\centering
+\includegraphics[width=0.5\columnwidth]{lives}
+\end{figure}
+\end{enumerate}
+
+\newpage
+\begin{large}\textbf{5. 회의록}\end{large}\\
+\begin{itemize}
+\item 12월 3일(일)\\
+ 
+- github 사용법 및 Latex 설치, 사용법 익힘\\
+ 
+- 오픈소스 주제 고민\\
+ 
+- 가계부, 오피스, 게임 중 pacman 게임으로 선정\\
+ 
+- 내일 만나서 오픈소스 실행 해볼 예정\\
+ 
+\item 12월 4일(월)\\
+ 
+- 어제 선택한 pacman 오픈소스 다운로드 및 설치 환경 구축\\
+ 
+- 여러 환경(Windows, Ubuntu) 중 ubuntu를 이용하여 실행\\
+ 
+- 게임 실행 및 방법 확인\\
+ 
+- 본격적으로 사용 설명서 및 선택 이유 작성 시작\\
+ 
+\item 12월 5일(화)\\
+ 
+ - 전체적인 틀 작성 완료\\
+ 
+ - 필요한 사진 캡쳐 완료\\
+ 
+\item 12월 6일(수)\\
+ 
+ - 사진 삽입 시작\\
+ 
+ - 오탈자 및 글 흐름 수정\\
+ 
+\item 12월 7일(목)\\
+
+ - 하이퍼링크 추가\\
+
+- 최종 오타, 인터페이스 수정\\
+
+\item 12월 8일(금)\\
+
+ - 최종본 작성 완료\\
+
+\end{itemize}
+
+\begin{large}\textbf{6. 느낀점}\end{large}
+\begin{enumerate}
+\item 오픈소스의 세계는 정말 넓다는 걸 다시 한번 느꼈습니다.
+\item github에서 다운받은 오픈소스를 실행하는데 여러 문제가 있었고, 다양한 컴파일 환경(C,C++,JAVA ....)에 익숙해져야 할 필요성을 느꼈습니다. 
+\item Latex을 처음 사용해 봐서 작성 하는데 어려움이 있었지만, 사용하다 보니 유용함을 느꼈습니다. 
+\item git을 사용하며 협업하는 방법을 알게되었습니다.
+\item 이미 완성된 오픈소스를 보며 우리의 부족한 점을 채워 나갈 수 있을 것 같습니다.
+
+\end{enumerate}
+
+\newpage
+\begin{large}\textbf{7. 기록}\end{large}
+ \begin{figure}[!h]
+\centering
+\includegraphics[width=1\columnwidth]{history}
+\end{figure}
+ \begin{figure}[!h]
+\centering
+\includegraphics[width=1\columnwidth]{history2}
+\end{figure}
+\end{document}
